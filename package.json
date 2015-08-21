@@ -32,5 +32,11 @@
   },
   "dependencies": {
     "lodash": "^3.10.1"
+  },
+  "config": {
+    "ghooks": {
+      "pre-commit": "gulp lint",
+      "pre-push": "gulp test"
+    }
   }
 }
