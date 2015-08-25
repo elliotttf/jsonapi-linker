@@ -27,3 +27,22 @@ var doc = linker.rewriteLinks('http://public-url.example.com', {
 */
 ```
 
+You may also designate a prefix to remove from the original string, e.g.:
+
+```javascript
+var doc = linker.rewriteLinks('http://public-url.example.com', '/api/v1', {
+  links: {
+    self: 'http://origin-url.example.com/api/v1/things/1'
+  },
+  // ...
+});
+/**
+{
+  links: {
+    self: 'http://public-url.example.com/things/1'
+  },
+  // ...
+}
+*/
+```
+

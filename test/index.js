@@ -127,27 +127,50 @@ module.exports = {
       );
       test.done();
     },
-    linkObject: function (test) {
-      test.expect(2);
+    linkObject: {
+      withoutPrefix: function (test) {
+        test.expect(2);
 
-      var rewritten = linker.rewriteLinks('http://new.example.com', {
-        links: {
-          self: {
-            href: 'http://old.example.com/images/1',
-            meta: {
-              count: 10
+        var rewritten = linker.rewriteLinks('http://new.example.com', {
+          links: {
+            self: {
+              href: 'http://old.example.com/images/1',
+              meta: {
+                count: 10
+              }
             }
           }
-        }
-      });
+        });
 
-      test.equal(
-        rewritten.links.self.href,
-        'http://new.example.com/images/1',
-        'Simple link not rewritten.'
-      );
-      test.equal(rewritten.links.self.meta.count, 10, 'Metadata unexpectedly changed.');
-      test.done();
+        test.equal(
+          rewritten.links.self.href,
+          'http://new.example.com/images/1',
+          'Simple link not rewritten.'
+        );
+        test.equal(rewritten.links.self.meta.count, 10, 'Metadata unexpectedly changed.');
+        test.done();
+      },
+      withPrefix: function (test) {
+        test.expect(1);
+
+        var rewritten = linker.rewriteLinks('http://new.example.com', /^\/api\/v\d+/, {
+          links: {
+            self: {
+              href: 'http://old.example.com/api/v1/images/1',
+              meta: {
+                count: 10
+              }
+            }
+          }
+        });
+
+        test.equal(
+          rewritten.links.self.href,
+          'http://new.example.com/images/1',
+          'Simple link not rewritten.'
+        );
+        test.done();
+      }
     },
     array: function (test) {
       test.expect(2);
