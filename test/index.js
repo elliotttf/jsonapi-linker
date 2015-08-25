@@ -86,6 +86,28 @@ module.exports = {
 
       test.equal(testLink, newLink + 'images/1?fields=src', 'Base link not rewritten.');
       test.done();
+    },
+    removePrefixString: function (test) {
+      test.expect(1);
+
+      var oldLink = 'http://old.example.com/api/v1/images/1';
+      var newLink = 'http://new.example.com/';
+
+      var testLink = linker.rewriter(oldLink, newLink, '/api/v1');
+
+      test.equal(testLink, newLink + 'images/1', 'Prefix not removed');
+      test.done();
+    },
+    removePrefixRegEx: function (test) {
+      test.expect(1);
+
+      var oldLink = 'http://old.example.com/api/v1/images/1';
+      var newLink = 'http://new.example.com/';
+
+      var testLink = linker.rewriter(oldLink, newLink, /\/api\/v\d+/);
+
+      test.equal(testLink, newLink + 'images/1', 'Prefix not removed');
+      test.done();
     }
   },
   rewriteLinks: {
