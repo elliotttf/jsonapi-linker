@@ -202,27 +202,123 @@ module.exports = {
       );
       test.done();
     },
-    nested: function (test) {
-      test.expect(1);
+    nested: {
+      noReplace: function (test) {
+        test.expect(1);
 
-      var rewritten = linker.rewriteLinks('http://new.example.com', {
-        data: {
-          relationships: {
-            author: {
-              links: {
-                self: 'http://old.example.com/images/1/author'
+        var rewritten = linker.rewriteLinks('http://new.example.com', {
+          data: {
+            relationships: {
+              author: {
+                links: {
+                  self: 'http://old.example.com/images/1/author'
+                }
               }
             }
           }
-        }
-      });
+        });
 
-      test.equal(
-        rewritten.data.relationships.author.links.self,
-        'http://new.example.com/images/1/author',
-        'Nested link not rewritten.'
-      );
-      test.done();
+        test.equal(
+          rewritten.data.relationships.author.links.self,
+          'http://new.example.com/images/1/author',
+          'Nested link not rewritten.'
+        );
+        test.done();
+      },
+      replace: {
+        object: {
+          string: function (test) {
+            test.expect(1);
+
+            var rewritten = linker.rewriteLinks('http://new.example.com', '/api/v1', {
+              data: {
+                relationships: {
+                  author: {
+                    links: {
+                      self: 'http://old.example.com/api/v1/images/1/author'
+                    }
+                  }
+                }
+              }
+            });
+
+            test.equal(
+              rewritten.data.relationships.author.links.self,
+              'http://new.example.com/images/1/author',
+              'Nested link not rewritten.'
+            );
+            test.done();
+          },
+          regex: function (test) {
+            test.expect(1);
+
+            var rewritten = linker.rewriteLinks('http://new.example.com', /\/api\/v1/, {
+              data: {
+                relationships: {
+                  author: {
+                    links: {
+                      self: 'http://old.example.com/api/v1/images/1/author'
+                    }
+                  }
+                }
+              }
+            });
+
+            test.equal(
+              rewritten.data.relationships.author.links.self,
+              'http://new.example.com/images/1/author',
+              'Nested link not rewritten.'
+            );
+            test.done();
+          }
+        },
+        array: {
+          string: function (test) {
+            test.expect(1);
+
+            var rewritten = linker.rewriteLinks('http://new.example.com', '/api/v1', {
+              data: [{
+                relationships: {
+                  author: {
+                    links: {
+                      self: 'http://old.example.com/api/v1/images/1/author'
+                    }
+                  }
+                }
+              }]
+            });
+
+            test.equal(
+              rewritten.data[0].relationships.author.links.self,
+              'http://new.example.com/images/1/author',
+              'Nested link not rewritten.'
+            );
+            test.done();
+          },
+          regex: function (test) {
+            test.expect(1);
+
+            var rewritten = linker.rewriteLinks('http://new.example.com', /\/api\/v1/, {
+              data: [{
+                relationships: {
+                  author: {
+                    links: {
+                      self: 'http://old.example.com/api/v1/images/1/author'
+                    }
+                  }
+                }
+              }]
+            });
+
+            test.equal(
+              rewritten.data[0].relationships.author.links.self,
+              'http://new.example.com/images/1/author',
+              'Nested link not rewritten.'
+            );
+            test.done();
+          }
+        }
+      }
     },
     unalteredArray: function (test) {
       test.expect(1);
