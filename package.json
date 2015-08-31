@@ -1,6 +1,6 @@
 {
   "name": "jsonapi-linker",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Allows links in JSONAPI documents to be rewritten.",
   "main": "lib/linker.js",
   "scripts": {
