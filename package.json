@@ -21,17 +21,17 @@
   },
   "homepage": "https://github.com/elliotttf/jsonapi-linker#readme",
   "devDependencies": {
-    "ghooks": "^0.3.2",
-    "gulp": "^3.8.8",
-    "gulp-coveralls": "^0.1.4",
-    "gulp-eslint": "^1.0.0",
-    "gulp-istanbul": "^0.8.1",
+    "ghooks": "0.3.2",
+    "gulp": "3.9.0",
+    "gulp-coveralls": "0.1.4",
+    "gulp-eslint": "1.0.0",
+    "gulp-istanbul": "0.8.1",
     "gulp-nodeunit": "0.0.5",
-    "hipsteripsum": "^0.2.0",
-    "nodeunit": "^0.9.0"
+    "hipsteripsum": "0.2.0",
+    "nodeunit": "0.9.1"
   },
   "dependencies": {
-    "lodash": "^3.10.1"
+    "lodash": "3.10.1"
   },
   "config": {
     "ghooks": {
