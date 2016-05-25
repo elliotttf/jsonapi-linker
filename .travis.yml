@@ -3,4 +3,5 @@ node_js:
   - "0.10"
   - "iojs"
   - "node"
+script: npm run lint && npm t && npm run coverage
 after_success: gulp coveralls
