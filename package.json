@@ -25,7 +25,7 @@
   "homepage": "https://github.com/elliotttf/jsonapi-linker#readme",
   "devDependencies": {
     "coveralls": "^2.11.9",
-    "eslint": "^2.10.2 <3",
+    "eslint": "^3.6.0",
     "ghooks": "^1.2.4",
     "hipsteripsum": "^0.2.0",
     "istanbul": "^0.4.3",
