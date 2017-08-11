@@ -1,5 +1,7 @@
 # JSON API Linker
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/elliotttf/jsonapi-linker.svg)](https://greenkeeper.io/)
+
 [![Build Status](https://travis-ci.org/elliotttf/jsonapi-linker.svg?branch=master)](https://travis-ci.org/elliotttf/jsonapi-linker)
 [![Coverage Status](https://coveralls.io/repos/elliotttf/jsonapi-linker/badge.svg?branch=master&service=github)](https://coveralls.io/github/elliotttf/jsonapi-linker?branch=master)
 
